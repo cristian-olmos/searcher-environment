@@ -1,13 +1,5 @@
 version: '3.1'
 services:
-  searcher-api:
-    container_name: searcher-api
-    image: searcher-api
-    build: ./
-    ports:
-      - "8080:8080"
-    depends_on:
-      - dbpostgresql
   dbpostgresql:
     container_name: dbpostgresql
     image: postgres
@@ -17,3 +9,19 @@ services:
       - POSTGRES_PASSWORD=password
       - POSTGRES_USER=postgres
       - POSTGRES_DB=mydb
+  searcher-api:
+    container_name: searcher-api
+    image: searcher-api
+    build: ./
+    ports:
+      - "8080:8080"
+    depends_on:
+      - dbpostgresql
+  web:
+    container_name: searcher
+    image: searcher
+    restart: on-failure
+    ports:
+      - "80:80"
+    depends_on:
+      - searcher-api
