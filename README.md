@@ -13,3 +13,7 @@ Para levantar todos los servicios, situado en el directorio raiz donde se encuen
 ```bash
 docker-compose up
 ```
+
+Se accede a la aplicación a través de la siguiente dirección
+
+ - http://localhost:4200

@@ -15,13 +15,13 @@ services:
     build: ./
     ports:
       - "8080:8080"
-    depends_on:
+    depends_on:secure
       - dbpostgresql
   web:
     container_name: searcher
     image: searcher
     restart: on-failure
     ports:
-      - "80:80"
+      - "4200:80"
     depends_on:
       - searcher-api
